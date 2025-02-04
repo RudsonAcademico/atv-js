@@ -21,14 +21,22 @@ function checarInventario(item, inventario){
 }
 
 
+function atacar(){
+    console.log("Ataque realizado!")
+}
+
+function boasVindas(){
+    nomeJogador = document.getElementById("nameOfHero").value;
+    console.log(`Bem-vindo, ${nomeJogador}!`)
+}
 
 //atributos e definições
 
 let tempo = 5; //define o tempo do cronometro
-let nomeJogador = "Malbenato";
 let moeda = 5;
+var nomeJogador = "Malbenato";
 let vida = 3; //define as chances que o jogador tem
-let nivel = 1;
+let nivelDoHeroi = 1;
 let ataque = 20;
 let defesa = 15;
 let health_point = Number(prompt("Quanto de HP você tem?"));
@@ -36,6 +44,14 @@ let dificuldade;
 let inimigosF1 = ["Goblin", "Orc", "Troll"]; //inimigos da fase 1
 let inventario = ["Espada", "Poção", "Escudo"];
 let buscar = String(prompt("Qual Item você busca?"));
+let personagem = new Object // objeto personagem
+    nome = nomeJogador,
+	nivel = nivelDoHeroi,
+	hp = health_point,
+    estatus = function(){
+        console.log(`O herói ${nome} está no nível ${nivel} e tem ${hp} pontos de vida`)
+    },
+
 
 
 //logs e exibições testes
@@ -52,14 +68,14 @@ if (health_point > 0){
 }
 
 // definição de dificuldade
-if (nivel >= 1 && nivel <= 10){
+if (nivelDoHeroi >= 1 && nivelDoHeroi <= 10){
     dificuldade = 'Fácil';
-} else if (nivel >= 11 && nivel <= 20) {
+} else if (nivelDoHeroi >= 11 && nivelDoHeroi <= 20) {
     dificuldade = 'Normal';
-} else  if (nivel >= 21){
+} else  if (nivelDoHeroi >= 21){
     dificuldade = 'Dificil';
 } else {
-    nivel = 11
+    nivelDoHeroi = 11
     dificuldade = 'Normal'
 };
 console.log(`Sua dificuldade é ${dificuldade}`);
@@ -83,3 +99,4 @@ console.log(checarInventario(buscar,inventario));
 inventario.splice(0,1);
 inventario.splice(2,0, "Armadura");
 console.log(inventario)
+
